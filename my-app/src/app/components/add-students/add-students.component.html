@@ -1,0 +1,83 @@
+<form [formGroup]="formG" (ngSubmit)="addInfo()">
+    <div>
+        <label>Username</label>
+        <input type="text" formControlName="studentName" placeholder="Enter your name">
+        <div
+            *ngIf="formG.get('studentName')?.['invalid'] && (formG.get('studentName')?.['dirty'] || formG.get('studentName')?.['touched'])">
+            <small *ngIf="formG.get('studentName')?.errors?.['required']" class="errorline">
+                username is required
+            </small>
+            <small
+                *ngIf="(formG.get('studentName')?.errors?.['minlength']) || (formG.get('studentName')?.errors?.['maxlength'])"
+                class="errorline">
+                username length must be between 2 to 12
+            </small>
+        </div>
+    </div>
+    <br>
+    
+    <div>
+        <label>Password</label>
+        <input type="text" formControlName="password" placeholder="Enter your password">
+        <div *ngIf="formG.get('password')?.['invalid'] && (formG.get('password')?.['touched'] || formG.get('password')?.['dirty'])">
+            <small *ngIf="formG.get('password')?.errors?.['required']" class="errorline">
+                password is required
+            </small>
+            <small *ngIf="formG.get('password')?.errors?.['pattern']" class="errorline">
+                password must contain atleast one lower, one upper, one number and one special character
+            </small>
+        </div>
+    </div>
+    <br>
+
+    <div>
+        <label>Mobile no.</label>
+        <input type="text" formControlName="mobile" placeholder="Enter mobile no">
+        <div *ngIf="formG.get('mobile')?.['invalid'] && (formG.get('mobile')?.['touched'] || formG.get('mobile')?.['dirty'])">
+            <small *ngIf="formG.get('mobile')?.errors?.['required']" class="errorline">
+                mobile no. is required
+            </small>
+            <small *ngIf="formG.get('mobile')?.errors?.['pattern']" class="errorline">
+                mobile no. should start with 6 or 9 and must be of 10 digits
+            </small>
+        </div>
+    </div>
+    <br>
+
+    <div>
+        <label>Email</label>
+        <input type="text" formControlName="email" placeholder="Enter email id">
+        <div *ngIf="formG.get('email')?.['invalid'] && (formG.get('email')?.['touched'] || formG.get('email')?.['dirty'])">
+            <small *ngIf="formG.get('email')?.errors?.['required']" class="errorline">
+                email id is required
+            </small>
+            <small *ngIf="formG.get('email')?.errors?.['pattern']" class="errorline">
+                invalid email id
+            </small>
+        </div>
+    </div>
+    <br>
+
+    <div>
+        <label>Date of Birth</label>
+        <input type="text" formControlName="dateofBirth" placeholder="Enter Date of Birth">
+        <div *ngIf="formG.get('dateofBirth')?.['invalid'] && (formG.get('dateofBirth')?.['touched'] || formG.get('dateofBirth')?.['dirty'])">
+            <small *ngIf="formG.get('dateofBirth')?.errors?.['required']" class="errorline">
+               Date of Birth is required
+            </small>
+            <small *ngIf="formG.get('dateofBirth')?.errors?.['pattern']" class="errorline">
+                invalid date of birth
+            </small>
+           
+        </div>
+        <!-- {{formG.get('dateofBirth')?.errors?.['pattern']|json}} -->
+    </div>
+
+    <br>
+    <p>{{formG.valid | json}}</p>
+    <input type="submit" value="Register">
+
+    
+</form>
+<!-- 
+<p>Add student</p> -->

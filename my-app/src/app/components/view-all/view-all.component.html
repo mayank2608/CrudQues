@@ -1,0 +1,22 @@
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Student Name</th>
+        <th>Password</th>
+        <th>Mobile no.</th>
+        <th>Email id</th>
+        <th>Date of Birth</th>
+        <th colspan="2">Actions</th>
+    </tr>
+    <tr *ngFor="let s of finalData$ | async">
+        <td>{{s.id}}</td>
+        <td>{{s.studentName}}</td>
+        <td>{{s.password}}</td>
+        <td>{{s.mobile}}</td>
+        <td>{{s.email}}</td>
+        <td>{{s.dateofBirth}}</td>
+        <td><button [routerLink]="['/viewById',s.id]">View</button></td>
+        <td><button [routerLink]="['/viewById',s.id]" (click)="deleteHandler(s.id)">Delete</button></td>
+        <td><button [routerLink]="['/updateStudent',s.id]">Update</button></td>
+    </tr>
+</table>
